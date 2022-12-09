@@ -5,10 +5,12 @@ Param(
     [Parameter(Mandatory=$true)]
     $WorkspaceKey
 )
-
+AgentConfigManager.MgmtSvcCfg
+AgentConfigManager.MgmtSvcCfg
 try {
-    $AgentConfig = New-Object -ComObject AgentConfigManager.MgmtSvcCfg -ErrorAction stop | out-null
+    $AgentConfig = New-Object -ComObject AgentConfigManager.MgmtSvcCfg -ErrorAction stop
     $AgentConfig.AddCloudWorkspace($WorkspaceID,$WorkspaceKey) | Out-Null
+    
 }
 catch {
 
