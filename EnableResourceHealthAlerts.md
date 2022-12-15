@@ -31,15 +31,20 @@ We can create an alert rule that is scoped on;
 
 I suggest to start with the Resource Type based approach and as a second phase move to resource based with a solution which should be super&uber dynamic. Probably a script that is based on tags..
 
+> **_Note:_** In this code sample I will go with the Resource Type Based scenario.
+
 ## Using Templates
 
-# ResourceHealthAlertsForResourceTypes
+### Resource Health Alerts For ResourceTypes
 
-Use this templates for deploying resource health alert rules for;
+Use [ResourceHealthAlertsForResourceTypes Template](./ArmTemplates/ResourceHealthAlertsForResourceTypes.json) for deploying resource health alert rules for;
 
-- Alert on Failures (CurrentStatus: )
+- Alerts on Failures (CurrentStatus: Unavailable or Degraded)
+- Does not include user initiated outages, only platform ones.
 
-Change the following section of the template to desired `Resource Types`
+_Things to consider and change if desired;_
+
+- Change the following section of the template to desired `Resource Types` please see the overview section in this document for supported resource types.
 
 ```Json
                             "anyOf": [
@@ -57,4 +62,17 @@ Change the following section of the template to desired `Resource Types`
                             ]
 ```
 
-> **_Note:_** In this code sample I will go with the Resource Type Based scenario.
+There's a parameter json here
+
+Running the template is easy.
+
+```PowerShell
+cd ./ArmTemplates
+$ResourceGroup = 'ContosoAll'
+$DeploymentName  = 'ResourceHealthAlertRuleDeployment'
+$TemplateFilePath = './ResourceHealthAlertsForResourceTypes.json'
+$TemplateParameterFile = './ResourceHealthAlertsForResourceTypes.Parameters.json'
+New-AzResourceGroupDeployment -Name $DeploymentName -ResourceGroupName $ResourceGroup `
+  -TemplateFile $TemplateFilePath  `
+  -TemplateParameterFile $TemplateParameterFile
+```
