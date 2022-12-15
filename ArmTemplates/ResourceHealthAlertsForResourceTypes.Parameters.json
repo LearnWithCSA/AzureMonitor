@@ -1,0 +1,14 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "activityLogAlertName": {
+        "value": "Resource Health Alert Rule"
+      },
+      "actionGroupResourceId": {
+        "value": "/subscriptions/C02646F3-6401-40C7-8543-69333821DA9A/resourceGroups/ContosoAll/providers/microsoft.insights/actionGroups/Spark22SendEmail"
+      }
+    }
+  }
+
+

@@ -44,17 +44,19 @@
                                     "field": "resourceType",
                                     "equals": "Microsoft.web/sites",
                                     "containsAny": null
+                                },
+                                {
+                                    "field" : "resourceType",
+                                    "equals": "Microsoft.compute/virtualmachines",
+                                    "containsany": null
                                 }
+
 
                             ]
                         },
                         {
                             "anyOf": [
-                                {
-                                    "field": "properties.currentHealthStatus",
-                                    "equals": "Available",
-                                    "containsAny": null
-                                },
+
                                 {
                                     "field": "properties.currentHealthStatus",
                                     "equals": "Unavailable",
@@ -74,18 +76,17 @@
                                     "equals": "Available",
                                     "containsAny": null
                                 },
-                                {
-                                    "field": "properties.previousHealthStatus",
-                                    "equals": "Unavailable",
-                                    "containsAny": null
-                                },
+                            
+
                                 {
                                     "field": "properties.previousHealthStatus",
                                     "equals": "Degraded",
                                     "containsAny": null
                                 }
+                                
                             ]
                         },
+
                         {
                             "anyOf": [
                                 {
@@ -95,6 +96,7 @@
                                 }
                             ]
                         },
+
                         {
                             "anyOf": [
                                 {
@@ -102,16 +104,7 @@
                                     "equals": "Active",
                                     "containsAny": null
                                 },
-                                {
-                                    "field": "status",
-                                    "equals": "Resolved",
-                                    "containsAny": null
-                                },
-                                {
-                                    "field": "status",
-                                    "equals": "In Progress",
-                                    "containsAny": null
-                                },
+
                                 {
                                     "field": "status",
                                     "equals": "Updated",
